@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shankar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1a21;
+            text-align: center;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Starry Background */
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background-color: rgb(208, 229, 233);
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        /* Container Styling */
+        .container {
+            max-width: 900px;
+            background: rgb(53, 183, 226);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #e51c1c;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .profile {
+            display: none;
+            background: rgb(130, 77, 8);
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="stars" id="stars"></div>
+
+    <div class="container">
+        <h2>Student Details Form</h2>
+        
+        <input type="text" id="name" placeholder="Enter Name">
+        <input type="text" id="roll" placeholder="Enter Roll Number">
+        <input type="text" id="branch" placeholder="Enter Branch">
+        
+        <select id="gender">
+            <option value="" disabled selected>Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+        <input type="email" id="email" placeholder="Enter Email">
+        <button onclick="showDetails()">Submit</button>
+
+        <div class="profile" id="profileCard">
+            <h2>Student Profile</h2>
+            <img src="https://via.placeholder.com/100" alt="Profile">
+            <p><strong>Name:</strong> <span id="pName"></span></p>
+            <p><strong>Roll No:</strong> <span id="pRoll"></span></p>
+            <p><strong>Branch:</strong> <span id="pBranch"></span></p>
+            <p><strong>Gender:</strong> <span id="pGender"></span></p>
+            <p><strong>Email:</strong> <span id="pEmail"></span></p>
+        </div>
+    </div>
+
+    <script>
+        function showDetails() {
+            document.getElementById("pName").innerText = document.getElementById("name").value;
+            document.getElementById("pRoll").innerText = document.getElementById("roll").value;
+            document.getElementById("pBranch").innerText = document.getElementById("branch").value;
+            document.getElementById("pGender").innerText = document.getElementById("gender").value;
+            document.getElementById("pEmail").innerText = document.getElementById("email").value;
+
+            document.getElementById("profileCard").style.display = "block";
+        }
+
+        // Generate random stars
+        function createStars() {
+            const starContainer = document.getElementById("stars");
+            for (let i = 0; i < 100; i++) {
+                let star = document.createElement("div");
+                star.classList.add("star");
+                let x = Math.random() * window.innerWidth;
+                let y = Math.random() * window.innerHeight;
+                star.style.left = `${x}px`;
+                star.style.top = `${y}px`;
+                starContainer.appendChild(star);
+            }
+        }
+
+        createStars();
+    </script>
+
+</body>
+</html>
